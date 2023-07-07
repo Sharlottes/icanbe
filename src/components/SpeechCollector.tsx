@@ -22,7 +22,6 @@ export default function SpeechCollector({ transcripts, setTranscripts }: SpeechC
         .map((results) => results[0].transcript)
         .join("");
 
-      console.log(texts);
       setTranscripts(texts);
     };
 

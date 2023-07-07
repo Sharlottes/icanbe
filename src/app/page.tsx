@@ -23,7 +23,6 @@ export default function Home() {
         prompt,
       }),
     }).then<{ output: string }>((res) => res.json());
-    console.log(output);
     setResultURL(output);
   };
 
