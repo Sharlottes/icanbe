@@ -3,4 +3,5 @@ export interface Envs {
   CLOUDINARY_NAME: string;
   CLOUDINARY_ID: string;
   CLOUDINARY_KEY: string;
+  GOOGLE_KEY: string;
 }

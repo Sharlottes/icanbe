@@ -8,13 +8,12 @@ class VideoRecorder {
   public async startVideo() {
     const stream = await navigator.mediaDevices.getUserMedia({
       video: { width: 1920, height: 1080 },
-      audio: true,
     });
     this.video ??= document.getElementById(this.videoId) as HTMLVideoElement;
-    console.log(this.video);
     this.video.srcObject = stream;
     this.video.play();
   }
+
   public captureVideo() {
     const canvas = document.createElement("canvas");
 

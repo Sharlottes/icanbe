@@ -1,10 +1,12 @@
 "use client";
 
+import SpeechCollector from "@/components/SpeechCollector";
 import VideoRecorder from "@/core/VideoRecorder";
 import { useRef, useEffect, useState } from "react";
 import Webcam from "react-webcam";
 
 export default function Home() {
+  const [prompt, setPrompt] = useState("Stormtroopers in the Starwars");
   const [resultURL, setResultURL] = useState("");
   const videoRecorder = useRef<VideoRecorder>(new VideoRecorder("webcam_video"));
 
@@ -18,7 +20,7 @@ export default function Home() {
       method: "POST",
       body: JSON.stringify({
         url,
-        prompt: "Stormtroopers in the Starwars",
+        prompt,
       }),
     }).then<{ output: string }>((res) => res.json());
     console.log(output);
@@ -36,6 +38,11 @@ export default function Home() {
         <img src={resultURL} alt="" />
       </div>
       <button onClick={handleClick}>click me to capture!</button>
+      <div>
+        <label>Prompt: </label>
+        <textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} style={{ width: "100%" }} />
+      </div>
+      <SpeechCollector transcripts={prompt} setTranscripts={setPrompt} />
     </main>
   );
 }
