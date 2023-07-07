@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     }
   )) as string[];
 
-  return NextResponse.json({
-    output,
+  return new Response(JSON.stringify(output), {
+    status: 200,
   });
 }
