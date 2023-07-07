@@ -36,6 +36,7 @@ export default function Home() {
       <div
         style={{
           display: "flex",
+          maxHeight: "600px",
         }}
       >
         <Webcam id="webcam_video" audio />
