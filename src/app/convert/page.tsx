@@ -19,7 +19,7 @@ export default function ConvertPage() {
     setIsProcessing(true);
     const url = videoRecorder.current.captureVideo();
     const { output } = await fetch(`/api/convertImage`, {
-      method: "POST",
+      method: "PUT",
       body: JSON.stringify({
         url,
         prompt,

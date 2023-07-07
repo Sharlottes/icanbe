@@ -13,7 +13,7 @@ async function translateText(text: string) {
   return response;
 }
 
-export async function POST(request: Request) {
+export async function PUT(request: Request) {
   const { url, prompt } = await request.json();
   const engPrompt = await translateText(prompt);
 
