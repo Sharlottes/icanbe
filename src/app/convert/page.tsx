@@ -10,6 +10,7 @@ export default function ConvertPage() {
   const [resultURL, setResultURL] = useState("");
   const videoRecorder = useRef<VideoRecorder>(new VideoRecorder("webcam_video"));
   const [isProcessing, setIsProcessing] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     videoRecorder.current.startVideo();
@@ -17,16 +18,22 @@ export default function ConvertPage() {
 
   const handleClick = async () => {
     setIsProcessing(true);
+    setError("");
     const url = videoRecorder.current.captureVideo();
-    const { output } = await fetch(`/api/convertImage`, {
-      method: "POST",
-      body: JSON.stringify({
-        url,
-        prompt,
-      }),
-    }).then<{ output: string }>((res) => res.json());
-    setResultURL(output);
-    setIsProcessing(false);
+    try {
+      const { output } = await fetch(`/api/convertImage`, {
+        method: "POST",
+        body: JSON.stringify({
+          url,
+          prompt,
+        }),
+      }).then<{ output: string }>((res) => res.json());
+      setResultURL(output);
+      setIsProcessing(false);
+    } catch (e) {
+      setError(String(e));
+      setIsProcessing(false);
+    }
   };
 
   return (
@@ -49,9 +56,10 @@ export default function ConvertPage() {
           onClick={handleClick}
         >
           click me to capture!
-        </button>{" "}
+        </button>
         {isProcessing && <span className="spinner" />}
       </div>
+      <caption style={{ color: "red", margin: "5px 0" }}>{error}</caption>
       <div>
         <label>Prompt: </label>
         <textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} style={{ width: "100%" }} />
