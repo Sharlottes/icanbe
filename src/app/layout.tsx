@@ -1,3 +1,5 @@
+import "/public/global.css";
+
 export const metadata = {
   title: "I Can Be",
   description: "XREAL 4th Metathon Project - I Can Be",
