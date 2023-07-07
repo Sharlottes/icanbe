@@ -1,10 +1,4 @@
-<h1 align="center">
-  <ruby>
-    WebFanDoor <rp>(</rp><rt>The Web-Frontend FanDoor<sup>(TM)</sup> Project</rt><rp>)</rp>
-  </ruby>
-</h1>
-
-## Getting Start
+# Getting Start
 
 ```bash
 yarn
