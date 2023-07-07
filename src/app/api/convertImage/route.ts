@@ -1,5 +1,4 @@
 import Replicate from "replicate";
-import { NextResponse } from "next/server";
 import GoogleCloudTranslate from "@google-cloud/translate";
 
 const replicate = new Replicate({
@@ -28,7 +27,7 @@ export async function POST(request: Request) {
     }
   )) as string[];
 
-  return new Response(JSON.stringify(output), {
+  return new Response(JSON.stringify({ output }), {
     status: 200,
   });
 }

@@ -6,7 +6,7 @@ interface SpeechCollectorProps {
   transcripts: string;
   setTranscripts: (value: string) => void;
 }
-export default function SpeechCollector({ transcripts, setTranscripts }: SpeechCollectorProps) {
+export default function SpeechCollector({ setTranscripts }: SpeechCollectorProps) {
   const [isListening, setIsListening] = useState(false);
 
   const speechRecognition = useRef<SpeechRecognition>();

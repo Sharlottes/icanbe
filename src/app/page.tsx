@@ -24,9 +24,7 @@ export default function Home() {
         url,
         prompt,
       }),
-    })
-      .then<{ output: string }>((res) => res.json())
-      .catch(() => ({ output: "" }));
+    }).then<{ output: string }>((res) => res.json());
     setResultURL(output);
     setIsProcessing(false);
   };
