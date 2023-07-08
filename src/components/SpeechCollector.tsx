@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import classNames from "./SpeechCollector.module.css";
 
 interface SpeechCollectorProps {
   transcripts: string;
@@ -54,10 +55,12 @@ export default function SpeechCollector({ setTranscripts }: SpeechCollectorProps
 
   return (
     <div>
-      <button onClick={isListening ? stopListening : startListening}>
-        click me to {isListening ? "stop" : "start"} speech collecting
+      <button onClick={isListening ? stopListening : startListening} className={classNames.input_button}>
+        {isListening ? "Stop" : "Start"} Input
       </button>
-      <button onClick={listeningReset}>reset right now</button>
+      <button onClick={listeningReset} className={classNames.reset_button}>
+        reset
+      </button>
     </div>
   );
 }
